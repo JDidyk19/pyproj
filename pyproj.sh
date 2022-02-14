@@ -1,22 +1,16 @@
 #!/usr/bin/env bash
 
 pyproj() {
-	# create dir and go to it
         mkdir "${1}" && cd "${1}"
 	
-	# create a virtual enviroment
         virtualenv venv
-	source venv/bin/activate
+
+	curl https://raw.githubusercontent.com/github/gitignore/main/Python.gitignore --output .gitignore
 	
-	# install code  formats
-	pip install black isort flake8
-	deactivate
-	
-	# create README.md file
 	echo "# ${1}" > README.md
 	
-	# initialize git
 	git init
-
+	git add README.md .gitignore
+	git commit -m "first commit"
 }
 
